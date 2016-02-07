@@ -7,8 +7,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+	<script src="js/inc.js"></script>
 	<script src="js/js.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container" style="margin-top: 30px;">
@@ -86,6 +88,7 @@
 				</div>
 				<h2>Items</h2>
 	    		<div ng-model="viewer" ng-repeat="item in items | orderBy:'itemName' | filter:search">
+	    			<img src="img/skins/{{viewer.itemParse(item.itemImage)}}.jpg">
 	    			{{item.itemName}}
 	    		</div>
 	    	</div>

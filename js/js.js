@@ -7,6 +7,10 @@ app.controller("list", function($scope, $firebaseArray, orderByFilter, filterFil
 	$scope.items = $firebaseArray(items);
 	
 	
+	$scope.itemParse = function(icid){
+		return itemConv[icid];
+	}
+	
 	// putting a console.log here won't work, see below
 	/*$scope.fireitems.$on("change", function() {
 	 	  var keys  = $scope.fireitems.$getIndex(),
