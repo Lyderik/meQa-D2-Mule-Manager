@@ -28,30 +28,30 @@
 						<div class="input-group">
 						  	<span class="input-group-addon" id="name">Name</span>
 						  	<span class="input-group-addon" style="border-right: 0;">
-        						<input type="checkbox" aria-label="...">
+        						<input type="checkbox"  ng-model="namecb" aria-label="...">
    							</span>
-						  	<input type="text" ng-model="search" class="form-control" placeholder="part of or full name" aria-describedby="name">
+						  	<input type="text" ng-model="nametf" ng-focus="namecb = true" class="form-control" placeholder="part of or full name" aria-describedby="name">
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="input-group">
 						<span class="input-group-addon" id="quality">Quality</span>
 							<span class="input-group-addon" style="border-right: 0;">
-        						<input type="checkbox" aria-label="...">
+        						<input type="checkbox" ng-model="qualcb" aria-label="...">
    							</span>
-							<input type="text" id="dd1" class="form-control" aria-label="..." readonly>
+							<input type="text" ng-model="qualtf" id="dd1" class="form-control" aria-label="..." readonly>
 						    <div class="input-group-btn">
 						        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
 						        <ul class="dropdown-menu dropdown-menu-right">
-						        	<li><a onclick="$('#dd1').val('Low Quality');" href="#">Low Quality</a></li>
-						         	<li><a onclick="$('#dd1').val('Normal');" href="#">Normal</a></li>
-						         	<li><a onclick="$('#dd1').val('Rune Words');" href="#">Rune Words</a></li>
-						         	<li><a onclick="$('#dd1').val('Superior');" href="#">Superior</a></li>
-						          	<li><a onclick="$('#dd1').val('Magic');" href="#">Magic</a></li>
-						          	<li><a onclick="$('#dd1').val('Rare');" href="#">Rare</a></li>
-						        	<li><a onclick="$('#dd1').val('Unique');" href="#">Unique</a></li>
-						        	<li><a onclick="$('#dd1').val('Set');" href="#">Set</a></li>
-						        	<li><a onclick="$('#dd1').val('Crafted');" href="#">Crafted</a></li>
+						        	<li><a ng-click="qualtf = 'Low Quality'" 	href="#">Low Quality</a></li>
+						         	<li><a ng-click="qualtf = 'Normal'" 		href="#">Normal</a></li>
+						         	<li><a ng-click="qualtf = 'Rune Words'" 	href="#">Rune Words</a></li>
+						         	<li><a ng-click="qualtf = 'Superior'" 		href="#">Superior</a></li>
+						          	<li><a ng-click="qualtf = 'Magic'" 			href="#">Magic</a></li>
+						          	<li><a ng-click="qualtf = 'Rare'" 			href="#">Rare</a></li>
+						        	<li><a ng-click="qualtf = 'Unique'" 		href="#">Unique</a></li>
+						        	<li><a ng-click="qualtf = 'Set'" 			href="#">Set</a></li>
+						        	<li><a ng-click="qualtf = 'Crafted'" 		href="#">Crafted</a></li>
 						        </ul>
 						    </div>
 						</div>
@@ -82,16 +82,16 @@
 						  	<span class="input-group-addon" id="name">Attribute</span>
 						  	<span class="input-group-addon" style="border-right: 0;">
 						  	
-        						<input type="checkbox" aria-label="...">
+        						<input type="checkbox" ng-model="attrcb" aria-label="...">
    							</span>
-						  	<input type="text" class="form-control" placeholder="part of or full name of attribute" aria-describedby="name">
+						  	<input type="text" ng-model="attrtf" class="form-control" placeholder="part of or full name of attribute" aria-describedby="name">
 						</div>
-					</div>
+					</div>{{attrtf}}
 				</div>
 				<h2>Items</h2>
 				<div id="items" masonry="true">
 					<div class="sizer"></div>
-		    		<div class="itemsCont" ng-model="viewer" ng-repeat="item in items | orderBy:'itemName' | filter:search">
+		    		<div class="itemsCont" ng-model="viewer" ng-repeat="item in items | orderBy:'itemName' | itemFilter:namecb:nametf:qualcb:qualtf:attrcb:attrtf">
 		    			<div>
 			    			<div class="itemsImage">
 			    				<img src="img/skins/{{itemParse(item.itemImage)}}.jpg">
