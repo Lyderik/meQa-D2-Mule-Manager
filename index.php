@@ -2,6 +2,8 @@
 <html ng-app="d2showcase">
 <head>
 	<title>meQa D2 Items Showcase</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
@@ -87,14 +89,26 @@
 					</div>
 				</div>
 				<h2>Items</h2>
-	    		<div ng-model="viewer" ng-repeat="item in items | orderBy:'itemName' | filter:search">
-	    			<img src="img/skins/{{viewer.itemParse(item.itemImage)}}.jpg">
-	    			{{item.itemName}}
+				<div id="items" masonry="true">
+					<div class="sizer"></div>
+		    		<div class="itemsCont" ng-model="viewer" ng-repeat="item in items | orderBy:'itemName' | filter:search">
+		    			<div>
+			    			<div class="itemsImage">
+			    				<img src="img/skins/{{itemParse(item.itemImage)}}.jpg">
+			    			</div>
+			    			  <div class="itemsDesc">
+			    				{{item.itemName}}
+			    				<ul>
+			    					<li ng-repeat="attr in item.attr">{{attr}}</li>
+			    				</ul>
+			    			</div>
+		    			</div>
+		    		</div>
 	    		</div>
 	    	</div>
 	    </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
